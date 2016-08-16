@@ -45,6 +45,34 @@ class Spaceship
 end
 
 
+class StealthShip < Spaceship
+
+  def initialize(name, speed, size)
+
+    # Call Spaceship's initialize
+    super(name, speed, size)
+
+    @stealth = true
+  end
+
+  def activate_camouflage
+    @stealth = true
+  end
+
+  def travel_to(planet_name)
+    if @stealth == true
+      puts "...."
+    else
+      puts "Traveling to #{planet_name}"
+    end
+
+    @planets_array.push( planet_name )
+
+  end
+end
+
+
+
 
 # /---------------------------------------------------------
 #  -------------------- APPLICATION CODE -------------------
@@ -67,6 +95,25 @@ the_enterprise.take_off
 the_enterprise.travel_to("New Vulcan")
 
 p the_enterprise.planets_visited
+
+
+puts ""
+puts ""
+puts "Stealth Ship"
+the_stealth_ship = StealthShip.new("Shhhhhhhhh", 1.0, "small")
+
+the_stealth_ship.take_off
+the_stealth_ship.travel_to("Coruscant")
+the_stealth_ship.travel_to("Endor")
+
+p the_stealth_ship.planets_visited
+
+
+the_stealth_ship.activate_camouflage
+
+the_stealth_ship.travel_to("Hoth")
+the_stealth_ship.travel_to("Mustafar")
+the_stealth_ship.travel_to("Kashyyk")
 
 
 # NOPE: the_falcon.star_wars_opening
