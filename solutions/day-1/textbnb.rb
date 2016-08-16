@@ -13,6 +13,26 @@ class Home
   end
 end
 
+# ----------
+
+def print_homes( homes_array )
+  homes_array.each do |the_home|
+    puts "#{the_home.name} in #{the_home.city}"
+    puts "Price: $#{the_home.price} a night"
+    puts ""
+  end
+
+  total_prices = homes_array.reduce(0.0) do |accumulator, the_home|
+    accumulator + the_home.price
+  end
+
+  # Calculate the average based on the amount of prices in the array
+  the_average = total_prices / homes_array.length
+
+  puts "Average price per night: $#{the_average}"
+end
+
+# ----------
 
 homes = [
   Home.new("Nizar's place", "San Juan", 2, 42),
@@ -25,41 +45,9 @@ homes = [
 
 
 # /---------------------------------------------------------
-#  ------------------------- EACH --------------------------
+#  ------------------- APPLICATION CODE --------------------
 #  ---------------------------------------------------------/
 
 puts ""
 
-homes.each do |the_home|
-  puts "#{the_home.name} in #{the_home.city}"
-  puts "Price: $#{the_home.price} a night"
-  puts ""
-end
-
-
-
-# /---------------------------------------------------------
-#  -------------------------- MAP --------------------------
-#  ---------------------------------------------------------/
-
-puts ""
-
-# Get the array of prices
-prices_array = homes.map do |the_home|
-  the_home.price
-end
-
-
-
-# /---------------------------------------------------------
-#  ------------------------ REDUCE -------------------------
-#  ---------------------------------------------------------/
-
-total_prices = prices_array.reduce(0.0) do |accumulator, the_price|
-  accumulator + the_price
-end
-
-# Calculate the average based on the amount of prices in the array
-the_average = total_prices / prices_array.length
-
-puts "Average price per night: $#{the_average}"
+print_homes( homes )
