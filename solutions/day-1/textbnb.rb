@@ -67,9 +67,11 @@ while user_input != "exit"
 
   if user_input == "help"
     puts "Available commands:"
-    puts "- [list] or [lowest] to see the list of homes (lowest price first)."
-    puts "- [highest] to see highest price first."
-    puts "- [capacity] to see highest capacity first."
+    puts "- [list] or [lowest] to see the list of homes (lowest price first)"
+    puts "- [highest] to see highest price first"
+    puts "- [capacity] to see highest capacity first"
+    puts "- [city] to filter by city"
+    puts "- [name] to name your own price"
 
   elsif user_input == "exit"
     puts "Goodbye."
@@ -97,6 +99,36 @@ while user_input != "exit"
       #               |
       #               v
     print_homes( by_capacity )
+
+  elsif user_input == "city"
+    puts "Enter the name of a city:"
+    user_city = gets.chomp.downcase
+
+    puts ""
+
+    city_homes = homes.select { |the_home| the_home.city.downcase == user_city }
+      # |
+      # --------------
+      #              |
+      #              v
+    print_homes( city_homes )
+
+  elsif user_input == "name"
+    puts "Enter your desired price:"
+    user_price = gets.chomp.to_f
+
+    puts ""
+
+    matched_home = homes.find { |the_home| the_home.price == user_price }
+
+    if matched_home == nil
+      puts "No homes available for $#{user_price} a night."
+    else
+      # Make an array of one so we can reuse the existing method
+      matches = [matched_home]
+
+      print_homes( matches )
+    end
 
   else
     puts "No understand. Beep boop."
