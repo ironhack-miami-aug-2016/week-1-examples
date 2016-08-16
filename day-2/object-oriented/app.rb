@@ -14,10 +14,21 @@ class Spaceship
     @name = name
     @speed = speed
     @size = size
+
+    @planets_array = []
   end
 
   def take_off
     puts "The #{@name} is now taking off going at #{@speed} lightspeed. Shwooooooh."
+  end
+
+
+  def travel_to(planet_name)
+    @planets_array.push( planet_name )
+  end
+
+  def planets_visited
+    @planets_array
   end
 
 
@@ -39,11 +50,23 @@ end
 #  -------------------- APPLICATION CODE -------------------
 #  ---------------------------------------------------------/
 
+puts "The Millennium Falcon"
 the_falcon = Spaceship.new("Millennium Falcon", 1.5, "medium")
 the_falcon.take_off
+the_falcon.travel_to("Mustafar")
+the_falcon.travel_to("Coruscant")
 
+p the_falcon.planets_visited
+
+
+puts ""
+puts ""
+puts "The Enterprise"
 the_enterprise = Spaceship.new("Enterprise", 2.0, "large")
 the_enterprise.take_off
+the_enterprise.travel_to("New Vulcan")
+
+p the_enterprise.planets_visited
 
 
 # NOPE: the_falcon.star_wars_opening
