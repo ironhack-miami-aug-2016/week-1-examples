@@ -32,6 +32,21 @@ class Spaceship
   end
 
 
+  # attr_reader(:speed)
+
+  # def speed
+  #   @speed
+  # end
+
+  # attr_writer(:speed)
+
+  # def speed=(new_speed)
+  #   @speed = new_speed
+  # end
+
+  attr_accessor(:speed)
+
+
   # CLASS METHOD
 
   def self.star_trek_opening
