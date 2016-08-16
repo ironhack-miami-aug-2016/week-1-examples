@@ -19,6 +19,7 @@ def print_homes( homes_array )
   homes_array.each do |the_home|
     puts "#{the_home.name} in #{the_home.city}"
     puts "Price: $#{the_home.price} a night"
+    puts "Capacity: #{the_home.capacity} guests"
     puts ""
   end
 
@@ -74,7 +75,28 @@ while user_input != "exit"
     puts "Goodbye."
 
   elsif user_input == "list" || user_input == "lowest"
-    print_homes( homes )
+    lowest_first = homes.sort { |home_a, home_b| home_a.price <=> home_b.price }
+      #   |
+      #   --------------
+      #                |
+      #                v
+    print_homes( lowest_first )
+
+  elsif user_input == "highest"
+    highest_first = homes.sort { |home_a, home_b| home_b.price <=> home_a.price }
+      #    |
+      #    --------------
+      #                 |
+      #                 v
+    print_homes( highest_first )
+
+  elsif user_input == "capacity"
+    by_capacity = homes.sort { |home_a, home_b| home_b.capacity <=> home_a.capacity }
+      #  |
+      #  --------------
+      #               |
+      #               v
+    print_homes( by_capacity )
 
   else
     puts "No understand. Beep boop."
