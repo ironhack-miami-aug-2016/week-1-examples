@@ -49,5 +49,35 @@ homes = [
 #  ---------------------------------------------------------/
 
 puts ""
+puts "Welcome to Textbnb."
+puts "==================="
+puts ""
+puts "Book homes from local hosts in 2+ countries."
 
-print_homes( homes )
+user_input = nil
+
+while user_input != "exit"
+  puts ""
+  puts "Enter [help] to see available commands or [exit] to exit."
+  puts "What is your selection?"
+  user_input = gets.chomp
+
+  puts ""
+
+  if user_input == "help"
+    puts "Available commands:"
+    puts "- [list] or [lowest] to see the list of homes (lowest price first)."
+    puts "- [highest] to see highest price first."
+    puts "- [capacity] to see highest capacity first."
+
+  elsif user_input == "exit"
+    puts "Goodbye."
+
+  elsif user_input == "list" || user_input == "lowest"
+    print_homes( homes )
+
+  else
+    puts "No understand. Beep boop."
+  end
+end
+
