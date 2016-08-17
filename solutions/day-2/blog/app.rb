@@ -14,11 +14,13 @@ class Blog
   end
 
   def go_next
+    # 0..2   ->   3..5
     @page_start += 3
     @page_end += 3
   end
 
   def go_prev
+    # 6..8   ->   3..5
     @page_start -= 3
     @page_end -= 3
   end
@@ -26,7 +28,10 @@ class Blog
   def print_current_page
     puts ""
 
+    # @page_start = 6
+    # @page_end = 8
     current_posts = @posts[@page_start..@page_end]
+    # @posts[6..8]
 
     current_posts.each do |the_post|
       the_post.print
@@ -59,11 +64,35 @@ end
 
 seconds_in_day = 60 * 60 * 24
 
+# Examples of using Time:
+
+# 78 hours ago:
+seventy_eight_hours = Time.now + 78 * 60 * 60
+
+# Tomorrow:
+tomorrow = Time.now + 24 * 60 * 60
+
+# Displaying the time in a pretty format
+tomorrow.strftime("Tomorrow is: %A, %B %-d %Y")
+
 
 
 # /---------------------------------------------------------
 #  ------------------- APPLICATION CODE --------------------
 #  ---------------------------------------------------------/
+
+
+# posts = [ 0, 1, 2,    3, 4, 5,     6, 7, 8,     9, 10, 11,    12, 13 ]
+#           -------     -------      -------      ---------     ------
+
+# posts.slice(6, 3)
+
+#   0    1    2    3    4    5    6    7
+# ["a", "b", "c", "d", "e", "f", "g", "h"]
+#                           -------------
+
+# posts.slice(5, 3)
+
 
 the_blog = Blog.new
 the_blog.add_post Post.new("First", Time.now - 4 * seconds_in_day, "First text")
