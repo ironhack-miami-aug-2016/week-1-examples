@@ -21,12 +21,12 @@ titles_array = the_reader.read_movies_from("movies.txt")
 movies_array = titles_array.map do |the_title|
   the_search = Imdb::Search.new(the_title)
   first_movie = the_search.movies[0]
+
+  puts "- #{first_movie.title}"
+
   first_movie
 end
 
-movies_array.each do |the_movie|
-  puts "- #{the_movie.title}"
-end
 
 puts ""
 
