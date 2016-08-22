@@ -11,6 +11,8 @@ class Board
   end
 
   def add_piece(the_piece)
+    # @pieces[8][8] = black_rook_right
+
     x = the_piece.x
     y = the_piece.y
     @pieces[x][y] = the_piece

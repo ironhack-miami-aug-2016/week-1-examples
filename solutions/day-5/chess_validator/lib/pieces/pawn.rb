@@ -13,13 +13,16 @@ class Pawn < Piece
     @change_y = final_y - @y
 
     if @change_x == 0 &&
-       direction_correct? &&
-       amount_of_spaces_correct?
+       direction_correct? == "yes" &&
+       amount_of_spaces_correct? == "yes"
       "yes"
     else
       "no"
     end
   end
+
+
+  private
 
   def direction_correct?
     if @color == "white" && @change_y > 0

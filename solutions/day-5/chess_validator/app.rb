@@ -4,12 +4,14 @@ require_relative("lib/movement/straight_movement.rb")
 require_relative("lib/movement/diagonal_movement.rb")
 
 require_relative("lib/pieces/piece.rb")
+
 require_relative("lib/pieces/rook.rb")
 require_relative("lib/pieces/king.rb")
 require_relative("lib/pieces/knight.rb")
 require_relative("lib/pieces/bishop.rb")
 require_relative("lib/pieces/queen.rb")
 require_relative("lib/pieces/pawn.rb")
+
 require_relative("lib/board.rb")
 
 
@@ -142,4 +144,5 @@ puts "-----------------------"
 
 p my_board.board_can_move?(57, 57,  7, 8) == "no"
 p my_board.board_can_move?(8, 8,  100, 100) == "no"
+p my_board.board_can_move?(5, 5,  8, 8) == "no"
 p my_board.board_can_move?(5, 8,  5, 8) == "no"
