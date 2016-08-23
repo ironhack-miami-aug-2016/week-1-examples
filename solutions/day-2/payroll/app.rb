@@ -13,5 +13,7 @@ ted = MultiPaymentEmployee.new('Ted', 'fortranr0x@gmail.com', 60000, 275, 55)
 
 employees = [ josh, nizar, ted ]
 
+puts ""
+
 the_payroll = Payroll.new(employees)
 the_payroll.pay_employees
